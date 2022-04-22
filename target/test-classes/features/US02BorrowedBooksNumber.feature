@@ -1,4 +1,4 @@
-@us02
+@us02 @wip
 Feature: As a librarian, I want to know who borrowed books
 @db @ui
   Scenario: verify the amount of borrowed books
