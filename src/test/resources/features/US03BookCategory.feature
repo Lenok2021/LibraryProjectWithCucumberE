@@ -1,4 +1,4 @@
-@us03  @wip
+@us03
 Feature: As a librarian, I want to know genre of books are being borrowed the most
 
 
