@@ -22,7 +22,7 @@ public class UsersStepDefs {
         String query = "SELECT id\n" +
                 "FROM users";
         DB_Util.runQuery(query);
-       actualIds = DB_Util.getColumnDataAsList(1);
+        actualIds = DB_Util.getColumnDataAsList(1);
 
     }
 
@@ -31,18 +31,25 @@ public class UsersStepDefs {
         String query = "select DISTINCT  id\n" +
                 "from users";
         DB_Util.runQuery(query);
-        List<String> expectedID = DB_Util.getColumnDataAsList(1) ;
+        List<String> expectedID = DB_Util.getColumnDataAsList(1);
         Assert.assertEquals(expectedID, actualIds);
     }
 
 
+    List<String> actualColumns;
+
     @When("Execute query to get all columns")
     public void execute_query_to_get_all_columns() {
 
+        String query = "SELECT * FROM users";
+        DB_Util.runQuery(query) ;
+        actualColumns = DB_Util.getAllColumnNamesAsList();
+        System.out.println(actualColumns);
     }
 
     @Then("verify the below columns are listed in result")
-    public void verify_the_below_columns_are_listed_in_result(io.cucumber.datatable.DataTable dataTable) {
-
+    public void verify_the_below_columns_are_listed_in_result(List<String> expectedColumnsName) {
+        System.out.println(expectedColumnsName);
+        Assert.assertEquals(expectedColumnsName, actualColumns);
     }
 }
